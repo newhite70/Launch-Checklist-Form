@@ -103,13 +103,13 @@ function theMeat(event){
       launchStatus.style.color = 'green';
       pilotStatus.innerHTML = pilotName + ' is ready.';
       document.getElementById('copilotStatus').innerHTML = copilotName + ' is ready.';
-      faultyItems.style.visibility = 'visible';
+      //faultyItems.style.visibility = 'visible';
    }
    else {
    launchStatus.innerHTML = 'Shuttle not ready for launch.';
    launchStatus.style.color = 'red';
-   document.getElementById("pilotStatus").innerHTML = pilotName + ' is ready.';
-   document.getElementById('copilotStatus').innerHTML = copilotName + ' is ready.';
+   //document.getElementById("pilotStatus").innerHTML = pilotName + ' is ready.';
+   //document.getElementById('copilotStatus').innerHTML = copilotName + ' is ready.';
    faultyItems.style.visibility = 'visible';
    }
 };
