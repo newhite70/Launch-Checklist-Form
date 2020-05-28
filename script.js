@@ -46,7 +46,8 @@ function theMeat(event){
          faultyItems.style.visibility = 'visible';
          return;
       }else{
-         document.getElementById("pilotStatus").innerHTML = pilotName + ' is ready.';
+         // FIXED THIS for RESUB
+         document.getElementById("pilotStatus").innerHTML = `${pilotName} is ready.`;
          }
       
    };
@@ -61,7 +62,8 @@ function theMeat(event){
          faultyItems.style.visibility = 'visible';
          return;
       }else{
-         document.getElementById('copilotStatus').innerHTML = copilotName + ' is ready.';
+         // FIXED THIS for RESUB
+         document.getElementById('copilotStatus').innerHTML = `${copilotName} is ready.`;
       }
       
    };
@@ -101,15 +103,12 @@ function theMeat(event){
    if (fuelLevel >= minFuel && cargoMass <= maxCargo) {
       launchStatus.innerHTML = 'Shuttle is ready for launch.';
       launchStatus.style.color = 'green';
-      pilotStatus.innerHTML = pilotName + ' is ready.';
-      document.getElementById('copilotStatus').innerHTML = copilotName + ' is ready.';
-      //faultyItems.style.visibility = 'visible';
+      
+
    }
    else {
    launchStatus.innerHTML = 'Shuttle not ready for launch.';
    launchStatus.style.color = 'red';
-   //document.getElementById("pilotStatus").innerHTML = pilotName + ' is ready.';
-   //document.getElementById('copilotStatus').innerHTML = copilotName + ' is ready.';
    faultyItems.style.visibility = 'visible';
    }
 };
