@@ -41,17 +41,18 @@ function theMeat(event){
       event.preventDefault();
       return;
       
-   }
+      
+   }else{
 
    //pilotName validation and not a num
    for (let i = 0; i < pilotName.length; i++){
       if(isNaN(pilotName[i]) === false){
          console.log(pilotName[i])
          alert("Pilot Name must not contain numbers")
-         pilotStatus.innerHTML = 'Pilot is not ready.';
-         launchStatus.innerHTML = 'Shuttle not ready for launch.';
-         launchStatus.style.color = 'red';
-         //faultyItems.style.visibility = 'visible';
+         pilotStatus.innerHTML = `Pilot is not ready.`;
+         // launchStatus.innerHTML = `Shuttle not ready for launch.`;
+         // launchStatus.style.color = 'red';
+         // faultyItems.style.visibility = 'hidden';
          return;
       }else{
          // FIXED THIS for RESUB
@@ -64,10 +65,10 @@ function theMeat(event){
       if(isNaN(copilotName[i]) === false){
          console.log(copilotName[i])
          alert("Co-pilot Name must not contain numbers")
-         document.getElementById("copilotStatus").innerHTML = 'Co-Pilot is not ready.';
-         launchStatus.innerHTML = 'Shuttle not ready for launch.';
-         launchStatus.style.color = 'red';
-         //faultyItems.style.visibility = 'visible';
+         document.getElementById("copilotStatus").innerHTML = `Co-Pilot is not ready.`;
+         // launchStatus.innerHTML = `Shuttle not ready for launch.`;
+         // launchStatus.style.color = 'red';
+         // faultyItems.style.visibility = 'hidden';
          return;
       }else{
          // FIXED THIS for RESUB
@@ -80,30 +81,33 @@ function theMeat(event){
    // ensures cargo is a number
    if(isNaN(cargoMass) === true){
       alert("Cargo Mass must be a number");
-      // stop the form submission
+      cargoStatus.innerHTML = `Cargo Mass must be a number.`;
       event.preventDefault();
       return;
    }
    // ensures fule is a num
-   else if(isNaN(fuelLevel) === true){
+   if(isNaN(fuelLevel) === true){
       alert("Fuel Level must be a number");
-      // stop the form submission
+      fuelStatus.innerHTML = `Fuel level must be a number`;
       event.preventDefault();
       return;
-   };
+   }
+   }
+
+   
    // ensures min fuel
    if (fuelLevel < minFuel) {
-      fuelStatus.innerHTML = 'Not enough fuel for the journey.';
+      fuelStatus.innerHTML = `Not enough fuel for the journey.`;
    }
    else {
-      fuelStatus.innerHTML = 'Fuel level high enough for launch';
+      fuelStatus.innerHTML = `Fuel level high enough for launch`;
    }
    // ensures max cargo
    if (cargoMass > maxCargo) {
-      cargoStatus.innerHTML = 'There is too much mass for take off.';
+      cargoStatus.innerHTML = `There is too much mass for take off.`;
    }
    else {
-      cargoStatus.innerHTML = 'Cargo mass low enough for launch.';
+      cargoStatus.innerHTML = `Cargo mass low enough for launch.`;
    }
    // check shuttle status
    if (fuelLevel >= minFuel && cargoMass <= maxCargo) {
