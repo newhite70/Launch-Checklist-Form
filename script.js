@@ -35,6 +35,14 @@ function theMeat(event){
    let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
    let cargoMass = document.querySelector("input[name=cargoMass]").value;
 
+   if (pilotName === "" || copilotName === "" || fuelLevel === "" || cargoMass === "") {
+      alert("All fields are required!");
+      // stop the form submission
+      event.preventDefault();
+      return;
+      
+   }
+
    //pilotName validation and not a num
    for (let i = 0; i < pilotName.length; i++){
       if(isNaN(pilotName[i]) === false){
@@ -43,7 +51,7 @@ function theMeat(event){
          pilotStatus.innerHTML = 'Pilot is not ready.';
          launchStatus.innerHTML = 'Shuttle not ready for launch.';
          launchStatus.style.color = 'red';
-         faultyItems.style.visibility = 'visible';
+         //faultyItems.style.visibility = 'visible';
          return;
       }else{
          // FIXED THIS for RESUB
@@ -59,7 +67,7 @@ function theMeat(event){
          document.getElementById("copilotStatus").innerHTML = 'Co-Pilot is not ready.';
          launchStatus.innerHTML = 'Shuttle not ready for launch.';
          launchStatus.style.color = 'red';
-         faultyItems.style.visibility = 'visible';
+         //faultyItems.style.visibility = 'visible';
          return;
       }else{
          // FIXED THIS for RESUB
@@ -68,22 +76,20 @@ function theMeat(event){
       
    };
    // ensures fields are filled
-   if (pilotName === "" || copilotName === "" || fuelLevel === "" || cargoMass === "") {
-      alert("All fields are required!");
-      // stop the form submission
-      event.preventDefault();
-   }
+
    // ensures cargo is a number
-   else if(isNaN(cargoMass) === true){
+   if(isNaN(cargoMass) === true){
       alert("Cargo Mass must be a number");
       // stop the form submission
       event.preventDefault();
+      return;
    }
    // ensures fule is a num
    else if(isNaN(fuelLevel) === true){
       alert("Fuel Level must be a number");
       // stop the form submission
       event.preventDefault();
+      return;
    };
    // ensures min fuel
    if (fuelLevel < minFuel) {
@@ -103,6 +109,7 @@ function theMeat(event){
    if (fuelLevel >= minFuel && cargoMass <= maxCargo) {
       launchStatus.innerHTML = 'Shuttle is ready for launch.';
       launchStatus.style.color = 'green';
+      faultyItems.style.visibility = 'hidden';
       
 
    }
